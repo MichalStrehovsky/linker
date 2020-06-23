@@ -332,6 +332,7 @@ namespace Mono.Linker.Dataflow
 				// System.Type.GetConstructor (BindingFlags, Binder, CallingConventions, Type[], ParameterModifier [])
 				"GetConstructor" when calledMethod.IsDeclaredOnType ("System", "Type")
 					&& calledMethod.HasThis
+					&& (calledMethod.HasParameterOfType (0, "System", "String") || calledMethod.HasParameterOfType (0, "System.Reflection", "BindingFlags"))
 					=> IntrinsicId.Type_GetConstructor,
 
 				// System.Type.GetMethod (string)
